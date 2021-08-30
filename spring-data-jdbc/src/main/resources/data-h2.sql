@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS "user";
+
+CREATE TABLE "user" (
+  ID UUID PRIMARY KEY,
+  FIRST_NAME VARCHAR(250),
+  LAST_NAME VARCHAR(250),
+  USERNAME VARCHAR(100) NOT NULL,
+  EMAIL VARCHAR(250) NOT NULL
+);
+
+INSERT INTO "user" (ID, FIRST_NAME, LAST_NAME, USERNAME, EMAIL)
+VALUES (random_uuid(), 'Maicon', 'Zanco', 'maiconfz', 'maiconfz@gmail.com');
