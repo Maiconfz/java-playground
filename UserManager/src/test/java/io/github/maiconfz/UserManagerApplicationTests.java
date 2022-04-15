@@ -1,4 +1,4 @@
-package com.maiconfz.usermanager;
+package io.github.maiconfz;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.maiconfz.usermanager.model;
+package io.github.maiconfz.usermanager.model;
 
 import lombok.Data;
 

@@ -1,9 +1,9 @@
-package com.maiconfz.usermanager;
+package io.github.maiconfz.usermanager;
 
-import com.maiconfz.usermanager.model.User;
-import com.maiconfz.usermanager.model.UserEmail;
-import com.maiconfz.usermanager.repository.UserEmailRepository;
-import com.maiconfz.usermanager.repository.UserRepository;
+import io.github.maiconfz.usermanager.model.User;
+import io.github.maiconfz.usermanager.model.UserEmail;
+import io.github.maiconfz.usermanager.repository.UserEmailRepository;
+import io.github.maiconfz.usermanager.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

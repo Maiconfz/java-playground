@@ -1,4 +1,4 @@
-package com.maiconfz.usermanager;
+package io.github.maiconfz.usermanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

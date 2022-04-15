@@ -1,6 +1,6 @@
-package com.maiconfz.usermanager.repository;
+package io.github.maiconfz.usermanager.repository;
 
-import com.maiconfz.usermanager.model.User;
+import io.github.maiconfz.usermanager.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
