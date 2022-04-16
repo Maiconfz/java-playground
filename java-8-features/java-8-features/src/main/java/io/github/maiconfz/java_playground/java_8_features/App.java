@@ -71,5 +71,11 @@ public class App {
 
 		final String flatMapTestOptional = Optional.ofNullable(null).flatMap(o -> Optional.of(String.valueOf(o.hashCode()))).orElse("Optional is empty");
 		System.out.println("flatMapTestOptional: " + flatMapTestOptional);
+
+		try {
+			Optional.ofNullable(null).orElseThrow(IllegalStateException::new);
+		} catch(Exception e) {
+			System.out.println("Entered on catch block due exception: " + e);
+		}
 	}
 }
