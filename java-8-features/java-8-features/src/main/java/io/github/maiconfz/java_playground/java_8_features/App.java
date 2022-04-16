@@ -1,5 +1,6 @@
 package io.github.maiconfz.java_playground.java_8_features;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +37,8 @@ public class App {
 		functionalInterfaces();
 		System.out.println("\n## Streams ##\n");
 		streams();
+		System.out.println("\n## New Date and Time APIs ##\n");
+		newDateAndTimeAPI();
 	}
 
 	public static void interfaceStaticAndDefaultMethods() {
@@ -164,5 +167,20 @@ public class App {
 		// Parallel stream
 		IntStream paralellIntStream = IntStream.range(1, 100).parallel();
 		paralellIntStream.forEach((i) -> System.out.printf("%s ;", i));
+	}
+
+	public static void newDateAndTimeAPI() {
+		final LocalDate localDate = LocalDate.now();
+		System.out.println(localDate);
+
+		final LocalDate localDate19900102 = LocalDate.of(1990, 1, 2);
+		System.out.println(localDate19900102);
+
+		final LocalDate localDate20000102 = LocalDate.parse("2000-01-02");
+		System.out.println(localDate20000102);
+
+		final LocalDate tomorrow = LocalDate.now().plusDays(1);
+		System.out.println("tomorrow: " + tomorrow);
+
 	}
 }
