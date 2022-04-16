@@ -2,6 +2,7 @@ package io.github.maiconfz.java_playground.java_8_features;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +16,8 @@ public class App {
 		interfaceStaticAndDefaultMethods();
 		System.out.println("---");
 		methodReferences();
+		System.out.println("---");
+		optionals();
 		System.out.println("---");
 	}
 
@@ -46,5 +49,27 @@ public class App {
 		// constructor reference
 		final List<String> listCopyByConstructorReferecen = stringsWithBlankStringAmongThem.stream().map(String::new).collect(Collectors.toList());
 		System.out.println("copied list using constructor reference: " + listCopyByConstructorReferecen);
+	}
+
+	public static void optionals() {
+
+		// Empty optional
+		final Optional<Object> emptyOptional = Optional.empty();
+		System.out.println("emptyOptional is present? " + emptyOptional.isPresent());
+
+		// Optional of non-null string
+		final Optional<String> stringOptional = Optional.of("String");
+		System.out.println("stringOptional.get: " + stringOptional.get());
+
+		// Optional of null
+		final Optional<String> nullStringOptional = Optional.ofNullable(null);
+		System.out.println("nullStringOptional.orElse: " + nullStringOptional.orElse("else String"));
+
+		// Optional map
+		final Optional<String> mapTestOptional = Optional.of("ABCDE").map(s -> s.charAt(1)).map(String::valueOf);
+		System.out.println("mapTestOptional: " + mapTestOptional.get());
+
+		final String flatMapTestOptional = Optional.ofNullable(null).flatMap(o -> Optional.of(String.valueOf(o.hashCode()))).orElse("Optional is empty");
+		System.out.println("flatMapTestOptional: " + flatMapTestOptional);
 	}
 }
