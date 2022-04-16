@@ -3,10 +3,16 @@ package io.github.maiconfz.java_playground.java_8_features;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,14 +26,16 @@ import io.github.maiconfz.java_playground.java_8_features.interface_static_and_d
 
 public class App {
 	public static void main(String[] args) {
+		System.out.println("## Interface static and default methods ##\n");
 		interfaceStaticAndDefaultMethods();
-		System.out.println("---");
+		System.out.println("\n## Method References ##\n");
 		methodReferences();
-		System.out.println("---");
+		System.out.println("\n## Optionals ##\n");
 		optionals();
-		System.out.println("---");
+		System.out.println("\n## Functional Interfaces ##\n");
 		functionalInterfaces();
-		System.out.println("---");
+		System.out.println("\n## Streams ##\n");
+		streams();
 	}
 
 	public static void interfaceStaticAndDefaultMethods() {
@@ -110,6 +118,51 @@ public class App {
 
 		final Consumer<Object> objectSysoutConsumer = new ObjectSysout();
 		objectSysoutConsumer.accept(1000);
+	}
 
+	public static void streams() {
+
+		// Empty stream
+		final Stream<String> emptyStream = Stream.empty();
+
+		// Iterate
+		final List<Integer> integers1to9 = Stream.iterate(1, i -> i + 1).limit(9).collect(Collectors.toList());
+
+		// iterate with forEach
+		integers1to9.stream().forEach(System.out::print);
+		System.out.println();
+		// filter even
+		integers1to9.stream().filter((i) -> i % 2 == 0).forEach(System.out::print);
+		System.out.println();
+		// Convert Integer to string using map
+		integers1to9.stream().map(String::valueOf).forEach(s -> System.out.print(String.format("%s - ", s)));
+		System.out.println();
+		// Reduce
+		System.out.println(integers1to9.stream().reduce(0, (i1, i2) -> i1 + i2));
+
+		// Stream builder
+
+		Builder<String> streamBuilder = Stream.builder();
+		streamBuilder.add("a").add("b").add("c").add("...");
+
+		Stream<String> abcStream = streamBuilder.build();
+		abcStream.forEach(System.out::print);
+		System.out.println();
+
+		IntStream intStream = IntStream.range(1, 10);
+		intStream.forEach(System.out::print);
+		System.out.println();
+
+		LongStream longStream = LongStream.rangeClosed(1, 10);
+		longStream.forEach(System.out::print);
+		System.out.println();
+
+		DoubleStream doubleStream = new Random().doubles(3);
+		doubleStream.forEach(d -> System.out.printf("%s ; ", d));
+		System.out.println();
+
+		// Parallel stream
+		IntStream paralellIntStream = IntStream.range(1, 100).parallel();
+		paralellIntStream.forEach((i) -> System.out.printf("%s ;", i));
 	}
 }
