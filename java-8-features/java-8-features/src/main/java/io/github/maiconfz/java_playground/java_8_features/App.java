@@ -1,6 +1,8 @@
 package io.github.maiconfz.java_playground.java_8_features;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -182,5 +184,19 @@ public class App {
 		final LocalDate tomorrow = LocalDate.now().plusDays(1);
 		System.out.println("tomorrow: " + tomorrow);
 
+		final LocalDate previousMonthSameDate = LocalDate.now().minus(1, ChronoUnit.MONTHS);
+		System.out.println("previousMonthSameDate: " + previousMonthSameDate);
+
+		final boolean isLeapYear = LocalDate.now().isLeapYear();
+		System.out.println("isLeapYear: " + isLeapYear);
+
+		final LocalTime localTimeNow = LocalTime.now();
+		System.out.println(localTimeNow);
+
+		final LocalTime localTimeFromParse = LocalTime.parse("10:59");
+		System.out.println(localTimeFromParse);
+
+		final LocalTime locaTimeFromLocalTimeOf = LocalTime.of(9, 35);
+		System.out.println(locaTimeFromLocalTimeOf);
 	}
 }
