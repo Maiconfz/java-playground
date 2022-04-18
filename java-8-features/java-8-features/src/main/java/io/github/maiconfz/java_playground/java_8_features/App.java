@@ -1,10 +1,18 @@
 package io.github.maiconfz.java_playground.java_8_features;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -198,5 +206,40 @@ public class App {
 
 		final LocalTime locaTimeFromLocalTimeOf = LocalTime.of(9, 35);
 		System.out.println(locaTimeFromLocalTimeOf);
+
+		final LocalDateTime localDateTimeNow = LocalDateTime.now();
+		System.out.println(localDateTimeNow);
+
+		final LocalDateTime localDateTimeOf = LocalDateTime.of(1990, 9, 13, 12, 1, 2);
+		System.out.println(localDateTimeOf);
+
+		final LocalDateTime localDateTimeFromParse = LocalDateTime.parse("2022-01-01T12:01:02");
+		System.out.println(localDateTimeFromParse);
+
+		System.out.print("ZoneIds: ");
+		ZoneId.getAvailableZoneIds().forEach(s -> System.out.printf("%s, ", s));
+		System.out.println();
+
+		final ZonedDateTime zonedDateTimeInBrazil = ZonedDateTime.now(ZoneId.of("Brazil/East"));
+		System.out.println(zonedDateTimeInBrazil);
+
+		final ZonedDateTime zonedDateTimeInPortugal = ZonedDateTime.now(ZoneId.of("Portugal"));
+		System.out.println(zonedDateTimeInPortugal);
+
+		System.out.println(Period.between(LocalDate.now(), LocalDate.now().plus(Period.ofDays(10))));
+		System.out.println(ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.now().plusDays(10)));
+
+		System.out.println(Duration.ofHours(1).getSeconds());
+		System.out.println(Duration.between(LocalTime.now(), LocalTime.now().plusHours(5)).getSeconds());
+
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME));
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE));
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_TIME));
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.US)));
+
+
+
+
 	}
 }
