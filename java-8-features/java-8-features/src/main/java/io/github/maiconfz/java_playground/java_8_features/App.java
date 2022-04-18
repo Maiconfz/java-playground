@@ -11,6 +11,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -49,6 +52,8 @@ public class App {
 		streams();
 		System.out.println("\n## New Date and Time APIs ##\n");
 		newDateAndTimeAPI();
+		System.out.println("\n## Native Base64 encode and decode ##\n");
+		nativeBase64EncodeDecode();
 	}
 
 	public static void interfaceStaticAndDefaultMethods() {
@@ -237,9 +242,14 @@ public class App {
 		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_TIME));
 		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
 		System.out.println(LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withLocale(Locale.US)));
+	}
 
+	public static void nativeBase64EncodeDecode() {
+		final Encoder base64Encoder = Base64.getEncoder();
+		final Decoder base64Decorder = Base64.getDecoder();
 
-
-
+		final String encodedStr = base64Encoder.encodeToString("Hi! My name is Maicon".getBytes());
+		System.out.println(encodedStr);
+		System.out.println(new String(base64Decorder.decode(encodedStr)));
 	}
 }
