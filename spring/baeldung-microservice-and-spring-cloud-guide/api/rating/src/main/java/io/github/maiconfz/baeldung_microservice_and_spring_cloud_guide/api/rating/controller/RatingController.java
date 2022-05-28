@@ -37,7 +37,7 @@ public class RatingController {
     }
 
     @PostMapping
-    public Rating postMethodName(@RequestBody Rating rating) {
+    public Rating create(@RequestBody Rating rating) {
         return this.ratingService.create(rating);
     }
 
