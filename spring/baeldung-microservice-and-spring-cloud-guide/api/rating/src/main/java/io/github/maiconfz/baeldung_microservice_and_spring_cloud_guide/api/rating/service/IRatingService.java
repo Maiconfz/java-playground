@@ -17,4 +17,6 @@ public interface IRatingService {
 
     Optional<Rating> findById(UUID id);
 
+    Set<Rating> findByBookId(UUID bookId);
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.rating.model.Rating;
@@ -29,6 +30,15 @@ public class RatingController {
     public Set<Rating> findAll() {
         log.info("Listing all ratings");
         return this.ratingService.findAll();
+    }
+
+    @GetMapping
+    public Set<Rating> findByBookId(
+            @RequestParam(required = false) UUID bookId) {
+        if (bookId == null) {
+            return ratingService.findAll();
+        }
+        return ratingService.findByBookId(bookId);
     }
 
     @GetMapping("/{id}")

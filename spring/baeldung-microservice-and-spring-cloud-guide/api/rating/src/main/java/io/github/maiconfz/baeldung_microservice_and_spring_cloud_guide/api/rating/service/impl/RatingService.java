@@ -1,9 +1,11 @@
 package io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.rating.service.impl;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -54,6 +56,15 @@ public class RatingService implements IRatingService {
         }
 
         return this.ratings.stream().filter(rating -> id.equals(rating.getId())).findFirst();
+    }
+
+    @Override
+    public Set<Rating> findByBookId(UUID bookId) {
+        if (bookId == null) {
+            return new HashSet<>();
+        }
+
+        return this.ratings.parallelStream().filter(rating -> bookId.equals(rating.getBookId())).collect(Collectors.toSet());
     }
 
     private void validateForCreationAndUpdate(Rating rating) {
