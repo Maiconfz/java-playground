@@ -1,4 +1,4 @@
-package io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.book.api.controller;
+package io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.book.controller;
 
 import java.util.Optional;
 import java.util.Set;
@@ -37,7 +37,7 @@ public class BookController {
     }
 
     @PostMapping
-    public Book postMethodName(@RequestBody Book book) {
+    public Book create(@RequestBody Book book) {
         return this.bookService.create(book);
     }
 
