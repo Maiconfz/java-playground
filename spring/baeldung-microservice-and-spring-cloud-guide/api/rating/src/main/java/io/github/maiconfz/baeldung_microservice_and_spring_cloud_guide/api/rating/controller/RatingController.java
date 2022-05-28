@@ -1,4 +1,4 @@
-package io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.rating.api.controller;
+package io.github.maiconfz.baeldung_microservice_and_spring_cloud_guide.api.rating.controller;
 
 import java.util.Optional;
 import java.util.Set;
