@@ -1,4 +1,4 @@
-package io.github.maiconfz.collectionsplayground;
+package io.github.maiconfz.java_playground.collections;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

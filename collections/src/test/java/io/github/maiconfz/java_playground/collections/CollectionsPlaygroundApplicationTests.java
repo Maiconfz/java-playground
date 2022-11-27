@@ -1,4 +1,4 @@
-package io.github.maiconfz.collectionsplayground;
+package io.github.maiconfz.java_playground.collections;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
