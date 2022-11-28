@@ -11,7 +11,8 @@ public class CollectionUtilsTests {
     @Test
     void addIfNotNull_AddingNull_ShouldNotAddToCollection() {
         var emptyList = new ArrayList<String>();
-        CollectionUtils.addIfNotNull(null, emptyList);
+        final String nullString = null;
+        CollectionUtils.addIfNotNull(nullString, emptyList);
         assertTrue(emptyList.isEmpty(), "Collection should be empty after adding null value");
     }
 
